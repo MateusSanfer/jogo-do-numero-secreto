@@ -27,6 +27,8 @@ function verificarChute() {
   } else {
     if (chute > numeroSecreto) {
       exibirTextoNaTela("p", "O número secreto é menor");
+    } else if (tentativas > 4) {
+      exibirTextoNaTela("p", "Tú é burro em chupa-cabra!");
     } else {
       exibirTextoNaTela("p", "O número secreto é maior");
     }
