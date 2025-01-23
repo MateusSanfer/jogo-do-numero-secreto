@@ -18,7 +18,7 @@ exibirMensagemInicial();
 function verificarChute() {
   let chute = document.querySelector("input").value;
 
-  if (numeroSecreto == chute) {
+  if (chute == numeroSecreto) {
     exibirTextoNaTela("h1", "Acertou Sacana!");
     let palavraTentativas = tentativas > 1 ? "tentativas" : "tentativa";
     let mensagensTentativas = `Você descobriu o número secreto com ${tentativas} ${palavraTentativas}`;
@@ -27,13 +27,17 @@ function verificarChute() {
   } else {
     if (chute > numeroSecreto) {
       exibirTextoNaTela("p", "O número secreto é menor");
-    } else if (tentativas > 4) {
-      exibirTextoNaTela("p", "Tú é burro em chupa-cabra!");
     } else {
       exibirTextoNaTela("p", "O número secreto é maior");
     }
+    verificarTentativas();
     tentativas++;
     limparCampo();
+  }
+}
+function verificarTentativas() {
+  if (tentativas > 4) {
+    exibirTextoNaTela("h1", "Tú é burro em chupa-cabra!");
   }
 }
 
@@ -47,12 +51,11 @@ function gerarNumeroAleatorio() {
     return gerarNumeroAleatorio();
   } else {
     listaDeNumerosSorteados.push(numeroEscolhido);
-    console.log(listaDeNumerosSorteados);
 
     return numeroEscolhido;
   }
 }
-
+console.log(listaDeNumerosSorteados);
 function limparCampo() {
   chute = document.querySelector("input");
   chute.value = "";
